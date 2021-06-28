@@ -1,12 +1,10 @@
-from flask import Flask
+from flask_script import Manager
 
-app = Flask(__name__)
+from apps import create_app
 
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
+app = create_app()
+manager = Manager(app=app)
 
 if __name__ == '__main__':
-    app.run()
+    # app.run()
+    manager.run()
