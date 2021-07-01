@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+    所有用户
+{% endblock %}
+{% block middle %}
+    {% if users %}
+        <table border="1" cellspacing="0">
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>创建时间</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.ctime }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h4>没有任何</h4>
+    {% endif %}
+{% endblock %}
