@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+    更新
+{% endblock %}
+{% block middle %}
+    <form action="{{ url_for("user.update") }}" method="POST">
+        <input type="text" hidden value="{{ user.id }}" name="id">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="{{ user.username }}"><br>
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" value="{{ user.phone }}"><br>
+        <input type="submit" value="更新">
+    </form>
+
+{% endblock %}

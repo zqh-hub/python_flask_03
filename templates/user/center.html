@@ -10,6 +10,7 @@
                 <th>姓名</th>
                 <th>电话</th>
                 <th>创建时间</th>
+                <th>操作</th>
             </tr>
             {% for user in users %}
                 <tr>
@@ -17,6 +18,10 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.phone }}</td>
                     <td>{{ user.ctime }}</td>
+                    <td>
+                        <a href="{{ url_for("user.delete")}}?id={{ user.id }}">删除</a>
+                        <a href="{{ url_for("user.update")}}?id={{ user.id }}">更新</a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

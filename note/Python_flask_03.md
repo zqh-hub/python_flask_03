@@ -188,3 +188,24 @@ def register():
   	  User.query.filter(User.xxx).offset(2).limit(2).all()  跳过1、2，获取3、4
 ```
 
+数据库删除
+
+```python
+# app.py
+
+@user_bp.route("/delete", endpoint="delete")
+def delete_user():
+    user_id = request.args.get("id")
+    target = User.query.get(user_id)
+    ''' 逻辑删除
+    target.is_delete = True
+    '''
+    # 物理删除
+    db.session.delete(target)
+    db.session.commit()
+    return redirect(url_for("user.center"))
+    
+# center.html
+<td><a href="{{ url_for("user.delete")}}?id={{ user.id }}">删除</a></td>
+```
+
